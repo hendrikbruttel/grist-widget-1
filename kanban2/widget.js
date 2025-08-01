@@ -140,6 +140,7 @@ window.addEventListener('load', async (event) => {
             {name:'COULEUR', title:'Card color', description:'Choice or html value', type:'Choice,Text', optional:true},
             {name:'TAGS', title:'Tags', description:'Additional fields to display', type:'Any', optional:true, allowMultiple:true}
         ],
+        allowSelectBy: true
         // async onEditOptions() {
         //     await W?.showConfig(); // manage the display of options when user click on "Open configuration" in Grist interface
         // },
