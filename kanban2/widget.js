@@ -450,6 +450,8 @@ function togglePopupTodo(todo) {
 
     if (W.opt.readonly) { 
         fermerPopup();
+        await grist.setCursorPos({rowId: todo.id});
+        await grist.commandApi.run('viewAsCard');
         return;
     }
 
