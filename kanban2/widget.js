@@ -196,9 +196,10 @@ async function afficherKanban(recs) {
     colonnes.forEach((col, idx) => {
         conteneurKanban.appendChild(creerColonneKanban(col, idx));
     });
-
+    
     // Distribution des tâches dans les colonnes
     if (recs?.length > 0) {
+        await grist.setCursorPos({rowId: recs[0].id});
         recs.forEach( todo => {
             const carte = creerCarteTodo(todo);
             const col = document.querySelector(`.contenu-colonne[data-statut="${todo.STATUT}"]`);
@@ -642,6 +643,7 @@ async function creerNouvelleTache(colonneId) {
         if (res.id && res.id > 0) {
             const rec = await W.fetchSelectedRecord(res.id); 
             togglePopupTodo(rec);
+            await grist.setCursorPos({rowId: res.id});
         }
     } catch (erreur) {
             console.error(T('Error on creation:'), erreur);
